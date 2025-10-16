@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISH WALA 10 - Learn English</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="logo-container">
+                <h1 class="app-logo">ENGLISH WALA 10</h1>
+                <div class="loading-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen hidden">
+        <div class="login-container">
+            <h1 class="app-title">ENGLISH WALA 10</h1>
+            <p class="subtitle">Your English Learning Companion</p>
+            
+            <div id="phone-input-section">
+                <div class="input-group">
+                    <label for="phone-number">Enter Mobile Number</label>
+                    <input type="tel" id="phone-number" placeholder="+91 9876543210" maxlength="13">
+                </div>
+                <button id="send-otp-btn" class="btn btn-primary">Send OTP</button>
+            </div>
+
+            <div id="otp-input-section" class="hidden">
+                <div class="input-group">
+                    <label for="otp-input">Enter OTP</label>
+                    <input type="text" id="otp-input" placeholder="Enter 6-digit OTP" maxlength="6">
+                </div>
+                <p class="otp-display">Your OTP: <span id="generated-otp"></span></p>
+                <button id="verify-otp-btn" class="btn btn-primary">Verify OTP</button>
+                <button id="resend-otp-btn" class="btn btn-secondary">Resend OTP</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Screen -->
+    <div id="main-app" class="screen hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>ENGLISH WALA 10</h1>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-page="home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </button>
+            <button class="nav-btn" data-page="courses">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">Courses</span>
+            </button>
+            <button class="nav-btn" data-page="notes">
+                <span class="nav-icon">📝</span>
+                <span class="nav-label">Notes</span>
+            </button>
+            <button class="nav-btn" data-page="quiz">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-label">Quiz</span>
+            </button>
+            <button class="nav-btn" data-page="contact">
+                <span class="nav-icon">📞</span>
+                <span class="nav-label">Contact</span>
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="welcome-section">
+                    <h2>Welcome to ENGLISH WALA 10! 🎉</h2>
+                    <p>Your complete English learning platform</p>
+                </div>
+
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <span class="feature-icon">📚</span>
+                        <h3>Free Courses</h3>
+                        <p>Access our YouTube channel for comprehensive English lessons</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📝</span>
+                        <h3>Grammar Notes</h3>
+                        <p>Download complete English grammar notes</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Practice Quiz</h3>
+                        <p>Test your knowledge with unlimited unique questions</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">👥</span>
+                        <h3>Join Community</h3>
+                        <p>Connect with other learners on WhatsApp</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Page -->
+            <div id="courses-page" class="page hidden">
+                <h2>Courses &amp; Classes</h2>
+                
+                <div class="course-section">
+                    <div class="youtube-section">
+                        <h3>📺 YouTube Channel</h3>
+                        <p>Subscribe to our channel for free English lessons</p>
+                        <a href="https://youtube.com/@englishwala10?si=NfalKZp-9S3ZTuKH" target="_blank" class="btn btn-youtube">
+                            Visit YouTube Channel
+                        </a>
+                    </div>
+
+                    <div class="whatsapp-section">
+                        <h3>🎓 Join Free Classes</h3>
+                        <p>Get free access to our WhatsApp learning group</p>
+                        <a href="https://whatsapp.com/channel/0029VbBSYQ9C1FuHdDN8tW3i" target="_blank" class="btn btn-whatsapp">
+                            Join WhatsApp Group
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Page -->
+            <div id="notes-page" class="page hidden">
+                <h2>English Grammar Notes</h2>
+                <div class="notes-container" id="notes-container">
+                    <!-- Notes will be dynamically loaded -->
+                </div>
+            </div>
+
+            <!-- Quiz Page -->
+            <div id="quiz-page" class="page hidden">
+                <div id="quiz-topics" class="quiz-topics">
+                    <h2>Select Quiz Topic</h2>
+                    <div class="topic-grid" id="topic-grid">
+                        <!-- Topics will be dynamically loaded -->
+                    </div>
+                </div>
+
+                <div id="quiz-container" class="quiz-container hidden">
+                    <div class="quiz-header">
+                        <h3 id="quiz-topic-title"></h3>
+                        <p>Question <span id="question-number">1</span> of <span id="total-questions">10</span></p>
+                    </div>
+                    
+                    <div class="quiz-content">
+                        <p class="question-text" id="question-text"></p>
+                        <div class="options-container" id="options-container">
+                            <!-- Options will be dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button id="next-question-btn" class="btn btn-primary" disabled>Next Question</button>
+                        <button id="finish-quiz-btn" class="btn btn-success hidden">Finish Quiz</button>
+                        <button id="back-to-topics-btn" class="btn btn-secondary">Back to Topics</button>
+                    </div>
+                </div>
+
+                <div id="quiz-results" class="quiz-results hidden">
+                    <h2>Quiz Results</h2>
+                    <div class="results-content">
+                        <p class="score-display">Score: <span id="score-value">0</span>/<span id="total-score">10</span></p>
+                        <p class="percentage-display"><span id="percentage-value">0</span>%</p>
+                        <button id="retake-quiz-btn" class="btn btn-primary">Take Another Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Page -->
+            <div id="contact-page" class="page hidden">
+                <h2>Contact Us</h2>
+                
+                <div class="contact-section">
+                    <div class="contact-card">
+                        <span class="contact-icon">📷</span>
+                        <h3>Instagram</h3>
+                        <p>Follow us on Instagram</p>
+                        <a href="https://instagram.com/ENGLISH_WALA_10" target="_blank" class="btn btn-instagram">
+                            @ENGLISH_WALA_10
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <span class="contact-icon">📧</span>
+                        <h3>Email</h3>
+                        <p>Send us your queries</p>
+                        <a href="mailto:dp194267@gmail.com" class="btn btn-email">
+                            dp194267@gmail.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
